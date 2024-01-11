@@ -26,7 +26,7 @@ loginBtn.addEventListener("click", () => {
       loadingScreen.style.display = "none";
       unlockedMode.classList.remove("hide");
       lockedMode.classList.add("hide");
-    }, 4000);
+    }, 2000);
   } else {
     if (usernameText.value !== "stoneoceancoder") {
       usernameText.style.borderColor = "#fa7777";
