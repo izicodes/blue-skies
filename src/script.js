@@ -9,6 +9,7 @@ const loadingScreen = document.querySelector(".loading-screen");
 const lockedMode = document.querySelector(".locked-mode");
 const unlockedMode = document.querySelector(".unlocked-mode");
 const loginPage = document.querySelector(".login-page");
+const date = document.querySelector(".date");
 const tabIcons = document.querySelectorAll(".tabs svg");
 
 loginBtn.addEventListener("click", () => {
@@ -21,7 +22,6 @@ loginBtn.addEventListener("click", () => {
     loginPage.classList.add("hide");
     loadingScreen.classList.remove("hide");
 
-    // Show unlockedMode after 4 seconds (during loadingScreen)
     setTimeout(() => {
       loadingScreen.style.display = "none";
       unlockedMode.classList.remove("hide");
@@ -62,6 +62,13 @@ tabIcons.forEach(function (svg) {
       svg.querySelector("path").style.fill = "#E5F4FF";
     });
 
+    lockTheScreen.addEventListener("click", () => {
+      if (!page.classList.contains("hide")) {
+        page.classList.add("hide");
+        svg.querySelector("path").style.fill = "#E5F4FF";
+      }
+    });
+
     console.log(xBtn);
   });
 });
@@ -82,6 +89,49 @@ function fadeIn(element, duration) {
   }, intervalTime);
 }
 
-// Usage example:
-// const myDiv = document.querySelector(".login-page"); // Replace 'myDiv' with the actual ID of your div
-// fadeIn(myDiv, 2000);
+// Function to format the date
+function formatDate(date) {
+  const daysOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+  const months = [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec",
+  ];
+
+  const day = date.getDate();
+  const daySuffix =
+    day >= 11 && day <= 13
+      ? "th"
+      : ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"][day % 10];
+  const dayString = day + daySuffix;
+
+  const dayOfWeek = daysOfWeek[date.getDay()];
+  const month = months[date.getMonth()];
+  const year = date.getFullYear();
+
+  return `${dayOfWeek} ${dayString} ${month} ${year}`;
+}
+date.textContent = formatDate(new Date());
+
+// TODO: lock the screen when you click the lock again
+const lockTheScreen = document.querySelector("#lockTheScreen");
+lockTheScreen.addEventListener("click", () => {
+  loadingScreen.classList.remove("hide");
+  setTimeout(() => {
+    loadingScreen.style.display = "none";
+    unlockedMode.classList.add("hide");
+    lockedMode.classList.remove("hide");
+    loginPage.classList.remove("hide");
+  }, 1500);
+  
+  
+});
