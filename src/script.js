@@ -19,6 +19,8 @@ loginBtn.addEventListener("click", () => {
   ) {
     usernameText.style.borderColor = "rgba(255, 255, 255, 0.6)";
     passwordText.style.borderColor = "rgba(255, 255, 255, 0.6)";
+    usernameText.value = "";
+    passwordText.value = "";
     loginPage.classList.add("hide");
     loadingScreen.classList.remove("hide");
 
@@ -122,11 +124,9 @@ function formatDate(date) {
 }
 date.textContent = formatDate(new Date());
 
-// TODO: lock the screen when you click the lock again
 const lockTheScreen = document.querySelector("#lockTheScreen");
 lockTheScreen.addEventListener("click", () => {
   loadingScreen.classList.remove("hide");
-
   setTimeout(() => {
     unlockedMode.classList.add("hide");
     loadingScreen.classList.add("hide");
