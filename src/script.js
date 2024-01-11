@@ -1,6 +1,7 @@
 // form
 const usernameText = document.querySelector("#username-text");
 const passwordText = document.querySelector("#password-text");
+const windowsIcon = document.querySelector("#windows");
 const about = document.querySelector("#about");
 const loginBtn = document.querySelector(".loginBtn");
 const aboutPage = document.querySelector(".about-page");
@@ -8,6 +9,7 @@ const loadingScreen = document.querySelector(".loading-screen");
 const lockedMode = document.querySelector(".locked-mode");
 const unlockedMode = document.querySelector(".unlocked-mode");
 const loginPage = document.querySelector(".login-page");
+const tabIcons = document.querySelectorAll(".tabs svg");
 
 loginBtn.addEventListener("click", () => {
   if (
@@ -40,10 +42,29 @@ loginBtn.addEventListener("click", () => {
   }
 });
 
-about.addEventListener(('click'), () => {
-    aboutPage.classList.remove('hide');
-    about.querySelector('path').style.fill = '#2795ef';
-})
+tabIcons.forEach(function (svg) {
+  svg.addEventListener("click", () => {
+    let target = `.${svg.dataset.target}`;
+    let page = document.querySelector(target);
+    page.classList.remove("hide");
+    page.style.opacity = 0;
+    fadeIn(page, 400);
+    svg.querySelector("path").style.fill = "#2795ef";
+
+    let xBtn = page.querySelector(".top-bar svg");
+    xBtn.addEventListener("click", () => {
+      page.classList.add("hide");
+      svg.querySelector("path").style.fill = "#E5F4FF";
+    });
+
+    windowsIcon.addEventListener("click", () => {
+      page.classList.add("hide");
+      svg.querySelector("path").style.fill = "#E5F4FF";
+    });
+
+    console.log(xBtn);
+  });
+});
 
 function fadeIn(element, duration) {
   let opacity = 0;

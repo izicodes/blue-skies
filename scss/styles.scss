@@ -285,14 +285,61 @@ body {
       width: 100%;
 
       .bottom-bar {
+        padding: 0 3rem;
         height: 89%;
         @include flex(normal);
-        justify-content: space-evenly;
-        img{
-           width: 35%;
-           filter: contrast(110%) brightness(100%) saturate(110%);
-           -webkit-filter: contrast(110%) brightness(100%) saturate(110%);
-}
+        justify-content: space-evenly !important;
+        img {
+          width: 38%;
+          filter: contrast(110%) brightness(100%) saturate(110%);
+          -webkit-filter: contrast(110%) brightness(100%) saturate(110%);
+        }
+
+        .right-side {
+          @include flex(column);
+          width: fit-content;
+          gap: 1.4rem;
+
+          .title {
+            text-align: center;
+
+            h1 {
+              font-size: 2.2rem;
+            }
+            h2 {
+              font-size: 1.3rem;
+              color: #8e8e8e;
+              font-weight: normal;
+              font-style: italic;
+            }
+          }
+
+          & > p {
+            width: 80%;
+            text-align: justify;
+          }
+
+          .traits {
+            @include flex(normal);
+            justify-content: space-around !important;
+            width: 90%;
+            gap: 1.5rem;
+
+            p {
+              font-size: 1rem;
+              text-align: center;
+              padding: 2px 4px;
+              width: 100%;
+              background: #7ac0f8;
+              box-shadow: 3px 3px 1.2px rgba(191.2, 224.57, 250.75, 0.68);
+              border-radius: 6px;
+              -webkit-border-radius: 6px;
+              -moz-border-radius: 6px;
+              -ms-border-radius: 6px;
+              -o-border-radius: 6px;
+            }
+          }
+        }
       }
 
       border-radius: 12px;
@@ -330,5 +377,9 @@ body {
   svg,
   path {
     cursor: url(../assets/point.ico), auto !important;
+  }
+
+  svg:hover path:hover {
+    fill: #2795ef;
   }
 }
