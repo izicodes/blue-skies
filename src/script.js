@@ -23,7 +23,7 @@ loginBtn.addEventListener("click", () => {
     loadingScreen.classList.remove("hide");
 
     setTimeout(() => {
-      loadingScreen.style.display = "none";
+      loadingScreen.classList.add("hide");
       unlockedMode.classList.remove("hide");
       lockedMode.classList.add("hide");
     }, 2000);
@@ -126,12 +126,11 @@ date.textContent = formatDate(new Date());
 const lockTheScreen = document.querySelector("#lockTheScreen");
 lockTheScreen.addEventListener("click", () => {
   loadingScreen.classList.remove("hide");
+
   setTimeout(() => {
-    loadingScreen.style.display = "none";
     unlockedMode.classList.add("hide");
+    loadingScreen.classList.add("hide");
     lockedMode.classList.remove("hide");
     loginPage.classList.remove("hide");
   }, 1500);
-  
-  
 });
