@@ -251,7 +251,7 @@ body > .wrapper .inner-wrapper .bottom .unlocked-mode .left .tabs {
     transform: rotate(360deg);
   }
 }
-.middle .about-page {
+.middle .page {
   height: 100%;
   width: 100%;
   display: flex;
@@ -259,10 +259,17 @@ body > .wrapper .inner-wrapper .bottom .unlocked-mode .left .tabs {
   align-items: center;
   padding: 3rem 3rem;
 }
-.middle .about-page .wrapper {
+.middle .page .wrapper {
   background: #eaf6ff;
   height: 100%;
   width: 100%;
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+.middle .about-page .wrapper {
   border-radius: 12px;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;

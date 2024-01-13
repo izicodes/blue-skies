@@ -3,6 +3,7 @@ const usernameText = document.querySelector("#username-text");
 const passwordText = document.querySelector("#password-text");
 const windowsIcon = document.querySelector("#windows");
 const about = document.querySelector("#about");
+const lockTheScreen = document.querySelector("#lockTheScreen");
 const loginBtn = document.querySelector(".loginBtn");
 const aboutPage = document.querySelector(".about-page");
 const loadingScreen = document.querySelector(".loading-screen");
@@ -11,6 +12,7 @@ const unlockedMode = document.querySelector(".unlocked-mode");
 const loginPage = document.querySelector(".login-page");
 const date = document.querySelector(".date");
 const tabIcons = document.querySelectorAll(".tabs svg");
+const pages = document.querySelectorAll(".page");
 
 loginBtn.addEventListener("click", () => {
   if (
@@ -44,34 +46,88 @@ loginBtn.addEventListener("click", () => {
   }
 });
 
+// tabIcons.forEach(function (svg) {
+//   svg.addEventListener("click", () => {
+//     let target = `.${svg.dataset.target}`;
+//     let page = document.querySelector(target);
+//     page.classList.remove("hide");
+//     page.style.opacity = 0;
+//     fadeIn(page, 400);
+//     svg.querySelector("path").style.fill = "#2795ef";
+
+//     let xBtn = page.querySelector(".top-bar svg");
+//     xBtn.addEventListener("click", () => {
+//       page.classList.add("hide");
+//       svg.querySelector("path").style.fill = "#E5F4FF";
+//     });
+
+//     windowsIcon.addEventListener("click", () => {
+//       page.classList.add("hide");
+//       svg.querySelector("path").style.fill = "#E5F4FF";
+//     });
+
+//     lockTheScreen.addEventListener("click", () => {
+//       if (!page.classList.contains("hide")) {
+//         page.classList.add("hide");
+//         svg.querySelector("path").style.fill = "#E5F4FF";
+//       }
+//     });
+
+//     console.log(xBtn);
+//   });
+// });
+
+let currentPage = null; // Track the currently open page
+
 tabIcons.forEach(function (svg) {
+  let target = `.${svg.dataset.target}`;
+  let page = document.querySelector(target);
+
   svg.addEventListener("click", () => {
-    let target = `.${svg.dataset.target}`;
-    let page = document.querySelector(target);
-    page.classList.remove("hide");
-    page.style.opacity = 0;
-    fadeIn(page, 400);
-    svg.querySelector("path").style.fill = "#2795ef";
+    if (currentPage !== null && currentPage !== page) {
+      // If another page is open, close it
+      currentPage.classList.add("hide");
+      currentPage.querySelector("path").removeAttribute("style");
+
+      tabIcons.forEach((icon) => {
+        icon.querySelector("path").removeAttribute("style");
+      });
+    }
+
+    if (page.classList.contains("hide")) {
+      // If the clicked page is hidden, show it
+      page.classList.remove("hide");
+      page.style.opacity = 0;
+      fadeIn(page, 400);
+      svg.querySelector("path").style.fill = "#2795ef";
+      currentPage = page;
+    } else {
+      // If the clicked page is already open, close it
+      page.classList.add("hide");
+      svg.querySelector("path").removeAttribute("style");
+      currentPage = null;
+    }
 
     let xBtn = page.querySelector(".top-bar svg");
     xBtn.addEventListener("click", () => {
       page.classList.add("hide");
-      svg.querySelector("path").style.fill = "#E5F4FF";
+      svg.querySelector("path").removeAttribute("style");
+      currentPage = null;
     });
 
     windowsIcon.addEventListener("click", () => {
       page.classList.add("hide");
-      svg.querySelector("path").style.fill = "#E5F4FF";
+      svg.querySelector("path").removeAttribute("style");
+      currentPage = null;
     });
 
     lockTheScreen.addEventListener("click", () => {
       if (!page.classList.contains("hide")) {
         page.classList.add("hide");
-        svg.querySelector("path").style.fill = "#E5F4FF";
+        svg.querySelector("path").removeAttribute("style");
+        currentPage = null;
       }
     });
-
-    console.log(xBtn);
   });
 });
 
@@ -124,7 +180,6 @@ function formatDate(date) {
 }
 date.textContent = formatDate(new Date());
 
-const lockTheScreen = document.querySelector("#lockTheScreen");
 lockTheScreen.addEventListener("click", () => {
   loadingScreen.classList.remove("hide");
   setTimeout(() => {

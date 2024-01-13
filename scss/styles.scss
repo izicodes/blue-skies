@@ -273,7 +273,7 @@ body {
     -o-border-radius: 12px;
   }
 
-  .about-page {
+  .page {
     height: 100%;
     width: 100%;
     @include flex(normal);
@@ -283,6 +283,18 @@ body {
       background: #eaf6ff;
       height: 100%;
       width: 100%;
+
+      border-radius: 12px;
+      -webkit-border-radius: 12px;
+      -moz-border-radius: 12px;
+      -ms-border-radius: 12px;
+      -o-border-radius: 12px;
+    }
+  }
+
+  .about-page {
+
+    .wrapper {
 
       .bottom-bar {
         padding: 0 3rem;
