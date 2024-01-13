@@ -14,7 +14,7 @@ body {
   margin: 0;
   overflow: hidden;
   background-color: blue;
-  background-image: url("../assets/sky.gif");
+  background-image: url("../assets/sky.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
@@ -284,6 +284,10 @@ body {
       height: 100%;
       width: 100%;
 
+      .bottom-bar {
+        height: 89%;
+      }
+
       border-radius: 12px;
       -webkit-border-radius: 12px;
       -moz-border-radius: 12px;
@@ -292,73 +296,138 @@ body {
     }
   }
 
-  .about-page {
+  .about-page .bottom-bar {
+    padding: 0 3rem;
+    height: 89%;
+    @include flex(normal);
+    justify-content: space-evenly !important;
+    img {
+      width: 38%;
+      filter: contrast(110%) brightness(100%) saturate(110%);
+      -webkit-filter: contrast(110%) brightness(100%) saturate(110%);
+    }
 
-    .wrapper {
+    .right-side {
+      @include flex(column);
+      width: fit-content;
+      gap: 1.4rem;
 
-      .bottom-bar {
-        padding: 0 3rem;
-        height: 89%;
-        @include flex(normal);
-        justify-content: space-evenly !important;
-        img {
-          width: 38%;
-          filter: contrast(110%) brightness(100%) saturate(110%);
-          -webkit-filter: contrast(110%) brightness(100%) saturate(110%);
+      .title {
+        text-align: center;
+
+        h1 {
+          font-size: 2.2rem;
         }
-
-        .right-side {
-          @include flex(column);
-          width: fit-content;
-          gap: 1.4rem;
-
-          .title {
-            text-align: center;
-
-            h1 {
-              font-size: 2.2rem;
-            }
-            h2 {
-              font-size: 1.3rem;
-              color: #8e8e8e;
-              font-weight: normal;
-              font-style: italic;
-            }
-          }
-
-          & > p {
-            width: 80%;
-            text-align: justify;
-          }
-
-          .traits {
-            @include flex(normal);
-            justify-content: space-around !important;
-            width: 90%;
-            gap: 1.5rem;
-
-            p {
-              font-size: 1rem;
-              text-align: center;
-              padding: 2px 4px;
-              width: 100%;
-              background: #7ac0f8;
-              box-shadow: 3px 3px 1.2px rgba(191.2, 224.57, 250.75, 0.68);
-              border-radius: 6px;
-              -webkit-border-radius: 6px;
-              -moz-border-radius: 6px;
-              -ms-border-radius: 6px;
-              -o-border-radius: 6px;
-            }
-          }
+        h2 {
+          font-size: 1.3rem;
+          color: #8e8e8e;
+          font-weight: normal;
+          font-style: italic;
         }
       }
 
-      border-radius: 12px;
-      -webkit-border-radius: 12px;
-      -moz-border-radius: 12px;
-      -ms-border-radius: 12px;
-      -o-border-radius: 12px;
+      & > p {
+        width: 80%;
+        text-align: justify;
+      }
+
+      .traits {
+        @include flex(normal);
+        justify-content: space-around !important;
+        width: 90%;
+        gap: 1.5rem;
+
+        p {
+          font-size: 1rem;
+          text-align: center;
+          padding: 2px 4px;
+          width: 100%;
+          background: #7ac0f8;
+          box-shadow: 3px 3px 1.2px rgba(191.2, 224.57, 250.75, 0.68);
+          border-radius: 6px;
+          -webkit-border-radius: 6px;
+          -moz-border-radius: 6px;
+          -ms-border-radius: 6px;
+          -o-border-radius: 6px;
+        }
+      }
+    }
+  }
+}
+
+.project-page {
+  .bottom-bar {
+    @include flex(column);
+    overflow: hidden;
+  }
+
+  .projects-wrapper {
+    width: 100%;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+
+    .project-con {
+      @include flex(normal);
+      gap: 1.3rem;
+      width: 100%;
+      text-align: center;
+
+      .project-card {
+        width: 100%;
+        .img-wrap {
+          width: 100%;
+          height: 10rem;
+          overflow: hidden;
+          background-color: red;
+          @include flex(normal);
+          border: 2px solid #7ac0f8;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          border-radius: 12px;
+          -webkit-border-radius: 12px;
+          -moz-border-radius: 12px;
+          -ms-border-radius: 12px;
+          -o-border-radius: 12px;
+        }
+
+        .card-title {
+          color: #276ea9;
+          font-weight: bold;
+          font-size: 1.3rem;
+          margin: 0.5rem 0;
+        }
+
+        .tech-list {
+          font-style: italic;
+        }
+      }
+    }
+  }
+
+  .nav-bar {
+    @include flex(normal);
+    gap: 2rem;
+    width: 70%;
+    justify-content: space-around;
+
+    .nav-item {
+      background-color: #addaff;
+      width: 100%;
+      height: 0.3rem;
+      cursor: url(../assets/point.ico), auto !important;
+
+      &:hover {
+        background-color: #75c1ff;
+      }
+
+      &.active {
+        background-color: #50abf5;
+      }
     }
   }
 }
@@ -393,5 +462,18 @@ body {
 
   svg:hover path:hover {
     fill: #2795ef;
+  }
+}
+
+@keyframes moveLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-40rem);
+    -webkit-transform: translateX(-40rem);
+    -moz-transform: translateX(-40rem);
+    -ms-transform: translateX(-40rem);
+    -o-transform: translateX(-40rem);
   }
 }

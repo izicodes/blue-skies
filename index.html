@@ -66,11 +66,16 @@
           </div>
         </section>
         <section class="middle">
-          <div class="login-page hide">
+          <div class="login-page">
             <div class="left-side">
               <div>
                 <label for="username-text">Username:</label>
-                <input type="text" name="username-text" id="username-text" autocomplete="off" />
+                <input
+                  type="text"
+                  name="username-text"
+                  id="username-text"
+                  autocomplete="off"
+                />
               </div>
               <div>
                 <label for="password-text">Password:</label>
@@ -168,13 +173,136 @@
                 </svg>
               </div>
               <div class="bottom-bar">
-                
+                <div class="projects-wrapper" data-openOn=".page1projects">
+                  <div class="project-con page1projects">
+                    <div class="project-card">
+                      <div class="img-wrap">
+                        <img
+                          src="https://i.pinimg.com/564x/87/89/ec/8789ec07c267abb11013af71bf2aaea9.jpg"
+                          alt="project image 1"
+                        />
+                      </div>
+                      <p class="card-title">Real Estate Concept</p>
+                      <p class="tech-list">
+                        html, css, scss, react.js, bootstrap 5, node.js, mongodb
+                      </p>
+                    </div>
+                    <div class="project-card">
+                      <div class="img-wrap">
+                        <img
+                          src="https://i.pinimg.com/564x/09/14/35/091435d18e420da8aed32990d9fceb8b.jpg"
+                          alt="project image 2"
+                        />
+                      </div>
+                      <p class="card-title">Course Dashboard</p>
+                      <p class="tech-list">
+                        react.js, tailwind, fontawesome, node.js, aws, oauth
+                      </p>
+                    </div>
+                    <div class="project-card">
+                      <div class="img-wrap">
+                        <img
+                          src="https://i.pinimg.com/564x/ba/6f/cc/ba6fccca179b6ef0425f3abe2582a0c4.jpg"
+                          alt="project image 3"
+                        />
+                      </div>
+                      <p class="card-title">E-Learning Platform</p>
+                      <p class="tech-list">
+                        html, css, php, javascript, jquery, vercel, gitlab
+                      </p>
+                    </div>
+                  </div>
+                  <div class="project-con page2projects hide">
+                    <div class="project-card">
+                      <div class="img-wrap">
+                        <img
+                          src="https://i.pinimg.com/564x/4d/12/36/4d12369a50a6c5f3502c388fb13cff84.jpg"
+                          alt="project image 1"
+                        />
+                      </div>
+                      <p class="card-title">Spark Innovative Web</p>
+                      <p class="tech-list">
+                        html, css, scss, react.js, node.js, npm
+                      </p>
+                    </div>
+                    <div class="project-card">
+                      <div class="img-wrap">
+                        <img
+                          src="https://i.pinimg.com/564x/74/e8/f4/74e8f4a0d0980bd645acbc2d29f33c85.jpg"
+                          alt="project image 2"
+                        />
+                      </div>
+                      <p class="card-title">E-Commerce Website</p>
+                      <p class="tech-list">
+                        react.js, tailwind, html, css, javascript
+                      </p>
+                    </div>
+                    <div class="project-card">
+                      <div class="img-wrap">
+                        <img
+                          src="https://i.pinimg.com/564x/5b/82/45/5b8245db4881a1b148105f9f390a6697.jpg"
+                          alt="project image 3"
+                        />
+                      </div>
+                      <p class="card-title">Skincare Website</p>
+                      <p class="tech-list">
+                        html, css, javascript, jquery, api, npm
+                      </p>
+                    </div>
+                  </div>
+                  <div class="project-con page3projects hide">
+                    <div class="project-card">
+                      <div class="img-wrap">
+                        <img
+                          src="https://ourscene.org/wp-content/uploads/2022/01/placeholder-2.png"
+                          alt="project image 1"
+                        />
+                      </div>
+                      <p class="card-title">Project Title #1</p>
+                      <p class="tech-list">
+                        a list of the languages / frameworks / tools you used
+                      </p>
+                    </div>
+                    <div class="project-card">
+                      <div class="img-wrap">
+                        <img
+                          src="https://ourscene.org/wp-content/uploads/2022/01/placeholder-2.png"
+                          alt="project image 1"
+                        />
+                      </div>
+                      <p class="card-title">Project Title #2</p>
+                      <p class="tech-list">
+                        a list of the languages / frameworks / tools you used
+                      </p>
+                    </div>
+                    <div class="project-card">
+                      <div class="img-wrap">
+                        <img
+                          src="https://ourscene.org/wp-content/uploads/2022/01/placeholder-2.png"
+                          alt="project image 1"
+                        />
+                      </div>
+                      <p class="card-title">Project Title #3</p>
+                      <p class="tech-list">
+                        a list of the languages / frameworks / tools you used
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="nav-bar">
+                  <div
+                    class="nav-item active"
+                    data-target=".page1projects"
+                  ></div>
+                  <div class="nav-item" data-target=".page2projects"></div>
+                  <div class="nav-item" data-target=".page3projects"></div>
+                </div>
               </div>
             </div>
           </div>
         </section>
         <section class="bottom">
-          <div class="locked-mode hide">
+          <div class="locked-mode">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"
@@ -200,7 +328,7 @@
               />
             </svg>
           </div>
-          <div class="unlocked-mode">
+          <div class="unlocked-mode hide">
             <div class="left">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

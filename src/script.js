@@ -13,6 +13,8 @@ const loginPage = document.querySelector(".login-page");
 const date = document.querySelector(".date");
 const tabIcons = document.querySelectorAll(".tabs svg");
 const pages = document.querySelectorAll(".page");
+const navItems = document.querySelectorAll(".nav-item");
+const projectsWrapper = document.querySelector(".projects-wrapper");
 
 loginBtn.addEventListener("click", () => {
   if (
@@ -147,6 +149,29 @@ function fadeIn(element, duration) {
   }, intervalTime);
 }
 
+function fade(element, duration, direction) {
+  let opacity = direction === "in" ? 0 : 1;
+  const intervalTime = 50;
+
+  const fadeInterval = setInterval(() => {
+    if (direction === "in") {
+      opacity += intervalTime / duration;
+      if (opacity >= 1) {
+        clearInterval(fadeInterval);
+        opacity = 1;
+      }
+    } else if (direction === "out") {
+      opacity -= intervalTime / duration;
+      if (opacity <= 0) {
+        clearInterval(fadeInterval);
+        opacity = 0;
+      }
+    }
+
+    element.style.opacity = opacity;
+  }, intervalTime);
+}
+
 // Function to format the date
 function formatDate(date) {
   const daysOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
@@ -188,4 +213,29 @@ lockTheScreen.addEventListener("click", () => {
     lockedMode.classList.remove("hide");
     loginPage.classList.remove("hide");
   }, 1500);
+});
+
+navItems.forEach(function (item) {
+  item.addEventListener("click", () => {
+    const openOnValue = projectsWrapper.dataset.openon;
+    const target = item.dataset.target;
+    const targetPage = document.querySelector(target);
+    const currentPage = document.querySelector(openOnValue);
+
+    fade(currentPage, 300, "out");
+
+    // Hide the current page after fading out
+    setTimeout(() => {
+      currentPage.classList.add("hide");
+      targetPage.classList.remove("hide");
+      fade(targetPage, 300, "in");
+    }, 350); // Adjust the delay based on your fade duration
+
+    projectsWrapper.dataset.openon = target;
+
+    navItems.forEach(function (item) {
+      item.classList.remove("active");
+    });
+    item.classList.add("active");
+  });
 });
